@@ -3,7 +3,7 @@ package analizator;
 import analizator.AnalizatorException.AnalizatorException;
 import entity.EnumClass.Type;
 import entity.Tag;
-import reader.FirstReader;
+import reader.FileReader;
 import reader.ReaderException.ReaderException;
 
 import java.util.ArrayList;
@@ -19,24 +19,19 @@ public class Analizator implements IAnalizator {
     private static final String OPEN_TAG_EXPRESSION = "<{1}[a-z A-Z]+|[=\"0-9\"]+>{1}";
     private static final String CLOSE_TAG_EXPRESSION = "\\/[a-z A-Z]+";
     private static final String TEXT_TAG_EXPRESSION = ".+|[^< ^>]]";
-
+    private static final int massLengthWithOneWord = 2;
+    private static final String tagFromSpaces = "";
     private Pattern openP = Pattern.compile(OPEN_TAG_EXPRESSION);
     private Pattern closeP = Pattern.compile(CLOSE_TAG_EXPRESSION);
     private Pattern textP = Pattern.compile(TEXT_TAG_EXPRESSION);
-
-
-    private static final int massLengthWithOneWord = 2;
-    private static final String tagFromSpaces = "";
-
-
     private List<Tag> tagsList = new ArrayList();
 
-    private FirstReader firstReader;
+    private FileReader firstReader;
 
 
     public Analizator(String path) throws AnalizatorException {
         try {
-            firstReader = new FirstReader(path);
+            firstReader = new FileReader(path);
         } catch (ReaderException e) {
             throw new AnalizatorException(e);
         }
@@ -106,13 +101,13 @@ public class Analizator implements IAnalizator {
         return tag;
     }
 
-    private void tagListCreate(Tag tag){
+    private void tagListCreate(Tag tag) {
         this.tagsList.add(tag);
     }
 
-    public void printTags(){
+    public void printTags() {
         analyze();
-        for (int i=0; i<tagsList.size();i++){
+        for (int i = 0; i < tagsList.size(); i++) {
             System.out.println(tagsList.get(i));
         }
     }

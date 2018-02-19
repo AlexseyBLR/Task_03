@@ -6,20 +6,18 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class FirstReader implements IReader {
+public class FileReader implements IReader {
 
 
-    Scanner scanner;
+    private Scanner scanner;
 
-    public FirstReader(String path) throws ReaderException {
+    public FileReader(String path) throws ReaderException {
         try {
             this.scanner = new Scanner(new File(path));
         } catch (FileNotFoundException e) {
             throw new ReaderException(e);
         }
     }
-
-
 
 
     public String getToken() {
