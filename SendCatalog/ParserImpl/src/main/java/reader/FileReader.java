@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+//FileReader - не надо пытаться мимикрировать под стандартную яву, имя этого класса слишком извество, чтобы так называть свои классы
 // а закрывать твой сканер будет Пушкин? как можно совершить такую ошибку?
 public class FileReader implements IReader {
 
