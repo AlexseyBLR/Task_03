@@ -1,6 +1,6 @@
 package entity;
 
-public class EnumClass {
+public class EnumClass {// да чтоб тебя так всю жизнь называли, ну неужели совсем мозни отключаются?
     public EnumClass() {
     }
 
