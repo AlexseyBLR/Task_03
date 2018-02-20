@@ -21,12 +21,12 @@ public class Analizator implements IAnalizator {
     private static final String TEXT_TAG_EXPRESSION = ".+|[^< ^>]]";
     private static final int massLengthWithOneWord = 2;
     private static final String tagFromSpaces = "";
-    private Pattern openP = Pattern.compile(OPEN_TAG_EXPRESSION);
+    private Pattern openP = Pattern.compile(OPEN_TAG_EXPRESSION);// openP - ну именуйте же вы нормально, ну потратьте чуть-чуть можговых усилий, определяя, чтовы все-таки делаете
     private Pattern closeP = Pattern.compile(CLOSE_TAG_EXPRESSION);
     private Pattern textP = Pattern.compile(TEXT_TAG_EXPRESSION);
     private List<Tag> tagsList = new ArrayList();
 
-    private FileReader firstReader;
+    private FileReader firstReader;// первый чтец - и что это поле значит?
 
 
     public Analizator(String path) throws AnalizatorException {
@@ -35,7 +35,7 @@ public class Analizator implements IAnalizator {
         } catch (ReaderException e) {
             throw new AnalizatorException(e);
         }
-        printTags();
+        printTags();// ЧТО? какая еще печать на консоль в библиотеке? 
     }
 
     private void analyze() {
@@ -51,12 +51,14 @@ public class Analizator implements IAnalizator {
         return wordMass;
     }
 
-    private String deleteSpaces(String fullString) {
-        String string = fullString.replaceAll("  ", "");
+    private String deleteSpaces(String fullString) {// deleteSpaces - читается как разделимые пробелы, ане делитель по пробелам
+        // плюс чуть-чуть мышления и хардкоженный методм ожет превратиться в универсальный
+        String string = fullString.replaceAll("  ", "");// "  " - розг на вас нет
         return string;
     }
 
-    private void createObject(String readString) {
+    private void createObject(String readString) {//readString - xmlData
+        // метод createObject - как понять, что этот метод, находясь в классе Analizator должен создавать, если даже у него возвращаемого типа нет
         String[] wordMass = divideByChar(readString, END_OF_WORD);
         if (wordMass.length < massLengthWithOneWord) {
             objCreator(this.tegType(readString), deleteSpaces(readString));
@@ -66,7 +68,8 @@ public class Analizator implements IAnalizator {
 
     }
 
-    private void createObjFromMass(String[] wordMass) {
+    private void createObjFromMass(String[] wordMass) {//FromMass - фром чего?
+        //wordMass - словетсный масс?
         for (int i = 0; i < wordMass.length; ++i) {
             String[] mass = divideByChar(wordMass[i], BEGIN_OF_WORD);
             if (mass.length > 1) {
@@ -101,12 +104,12 @@ public class Analizator implements IAnalizator {
         return tag;
     }
 
-    private void tagListCreate(Tag tag) {
+    private void tagListCreate(Tag tag) {// что-то по сигнатуре этого метода, не скажешь, что он что-то создает
         this.tagsList.add(tag);
     }
 
-    public void printTags() {
-        analyze();
+    public void printTags() {//слов нет
+        analyze();// тем более слов нет - мето печати вызывает какой-то анализ, это как доярка, которая решает, что должны управлять государтсовм
         for (int i = 0; i < tagsList.size(); i++) {
             System.out.println(tagsList.get(i));
         }

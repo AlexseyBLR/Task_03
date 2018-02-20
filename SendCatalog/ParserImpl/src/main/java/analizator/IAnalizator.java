@@ -2,5 +2,5 @@ package analizator;
 
 public interface IAnalizator {
 
-    void printTags();
+    void printTags();//мля.........
 }

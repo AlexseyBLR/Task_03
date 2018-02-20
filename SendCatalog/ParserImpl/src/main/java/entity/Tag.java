@@ -31,7 +31,8 @@ public class Tag implements ITag {
     }
 
     public boolean equals(Object o) {
-        if (this == o) {
+        if (this == o) {// ну на тут такая цепочка? ну ты хоть проанализируй, как твой код выполняется?
+            //зачем писать лишние ветвления, которые только усложныют код? да еще стандартнейший из методов
             return true;
         } else if (o != null && this.getClass() == o.getClass()) {
             Tag tag = (Tag)o;
