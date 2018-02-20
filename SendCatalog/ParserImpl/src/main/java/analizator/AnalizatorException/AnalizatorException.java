@@ -1,4 +1,5 @@
-package analizator.AnalizatorException;
+package analizator.AnalizatorException;//правила именования пакетов СЛЕДУЕТ соблюдать, даже если ты пишешь библиотеку
+// а верхний регистр в пакетах в третьем таске - это уже отсутствие чего?
 
 public class AnalizatorException extends Exception {
 
